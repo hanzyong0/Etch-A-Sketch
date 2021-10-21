@@ -1,0 +1,31 @@
+:root {
+    --rows: 1;
+    --cols: 1;
+}
+
+html {
+    height: 100%;
+}
+body {
+    min-height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container {
+    height: 500px;
+    width: 500px;
+    border: 2px solid black;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(var(--cols), 1fr);
+    grid-template-rows: repeat((var--rows), 1fr);
+    gap: 1px;
+}
+
+.square {
+    border: 1px solid red;
+}
+

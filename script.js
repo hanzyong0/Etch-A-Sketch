@@ -1,3 +1,4 @@
+// Make grid function
 const container = document.querySelector('#container');
 
 function makeGrid(rows, cols) {
@@ -12,10 +13,30 @@ function makeGrid(rows, cols) {
 
 makeGrid(16, 16);
 
+// Global variable to detect holding mousedown
+let isMouseDown = false;
+
+document.addEventListener('mousedown', () => {
+    isMouseDown = true;
+});
+
+document.addEventListener('mouseup', () => {
+    isMouseDown = false;
+});
+
+// Change color when clicked 
 const squares = document.querySelectorAll('.square');
 
 squares.forEach((square) => {
-    square.addEventListener('mouseover', (e) => {
-        e.target.classList.toggle('yellow');
+    square.addEventListener('mouseenter', (e) => {
+        if (isMouseDown) {
+            e.target.classList.add('yellow');
+        };
+    });
+});
+
+squares.forEach((square) => {
+    square.addEventListener('mousedown', (e) => {
+        e.target.classList.add('yellow');
     });
 });

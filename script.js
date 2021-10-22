@@ -40,3 +40,10 @@ squares.forEach((square) => {
         e.target.classList.add('yellow');
     });
 });
+
+// Reset button
+const btn = document.querySelector('#reset');
+
+btn.addEventListener('click', () => {
+    window.location.reload();
+});

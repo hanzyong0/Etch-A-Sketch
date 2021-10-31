@@ -1,6 +1,10 @@
-// Make grid function
 const container = document.querySelector('#container');
+const btn = document.querySelector('#reset');
 
+let a;
+let b;
+
+// Function to make grid
 function makeGrid(rows, cols) {
     container.style.setProperty('--rows', rows);
     container.style.setProperty('--cols', cols);
@@ -12,15 +16,11 @@ function makeGrid(rows, cols) {
 }
 
 // Reset button
-const btn = document.querySelector('#reset');
-
 function erase() {
     location.reload();
 };
 
 // Prompt user for grid size
-let a;
-let b;
 function getRows() {
     a = prompt('What is the number of rows?');
     while (a > 100) {
@@ -41,19 +41,16 @@ function getCols() {
 
 // Reload and make new grid
 btn.addEventListener('click', () => {
-    erase();
     getRows();
     getCols();
+    erase();
 });
-
-a = Number(sessionStorage.getItem('a'));
-b = Number(sessionStorage.getItem('b'));
 
 // Check whether page is first load
 if (sessionStorage.getItem('a') == null || sessionStorage.getItem('b') == null) {
     makeGrid(16, 16);
 } else {
-    makeGrid(a, b);
+    makeGrid(Number(sessionStorage.getItem('a')), Number(sessionStorage.getItem('b')));
 };
 
 // Global variable to detect holding mousedown
